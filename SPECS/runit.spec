@@ -5,7 +5,7 @@ Summary:	A UNIX init scheme with service supervision
 
 License: BSD-3-Clause
 URL: http://smarden.org/runit/
-Source0: http://smarden.org/runit/runit-2.1.2.tar.gz
+Source0: https://github.com/madscientist42/runit/archive/refs/tags/2.1.2.tar.gz
 
 
 BuildRequires: glibc-static make gcc
@@ -18,26 +18,21 @@ a replacement for sysvinit, and other init schemes. It runs on GNU/Linux,
 systems.
 
 %prep
-%autosetup -n admin
+%autosetup
 pwd
 ls
 
 %build
-cd runit-%{version}
-whoami
-id
 package/compile
 
 
 %install
-cd runit-%{version}
 mkdir -p /usr/local/bin
 for i in `cat package/commands`; do
   cp command/$i /usr/local/bin/$i
 done
 
 %check
-cd runit-%{version}
 package/check
 
 %files
